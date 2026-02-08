@@ -1,0 +1,173 @@
+<!-- Navigation Component - Fudumala School Jersey Drive -->
+<div fs-scrolldisable-element="smart-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar6_component color-scheme-1 w-nav">
+  <div class="navbar6_container">
+    <a href="index.html" class="navbar6_logo-link w-nav-brand">
+      <img loading="eager" height="32px" alt="Fudumala Logo" src="images/relume-62846.png" class="navbar6_logo">
+    </a>
+    <nav role="navigation" class="navbar6_menu w-nav-menu">
+      <div class="navbar6_menu-left">
+        <a href="index.html" class="navbar6_link w-nav-link">Home</a>
+        <a href="about-us.html" class="navbar6_link w-nav-link">About Us</a>
+        <a href="sponsor-a-jersey.html" class="navbar6_link w-nav-link">Sponsor Now</a>
+        <a href="get-involved.html" class="navbar6_link w-nav-link">Get involved</a>
+        <div class="navbar6_dropdown w-dropdown">
+          <div class="navbar6_dropdown-toggle w-dropdown-toggle">
+            <div class="navbar6_dropdown-text">Impact Stories</div>
+            <div class="navbar6_dropdown-icon w-icon-dropdown-toggle"></div>
+          </div>
+          <nav class="navbar6_dropdown-list w-dropdown-list">
+            <a href="2025-impact-stories.html" class="navbar6_dropdown-link w-dropdown-link">2025 Impact</a>
+            <a href="2024-impact-stories.html" class="navbar6_dropdown-link w-dropdown-link">2024 Impact</a>
+            <a href="2023-impact-stories.html" class="navbar6_dropdown-link w-dropdown-link">2023 Impact</a>
+          </nav>
+        </div>
+        <a href="news.html" class="navbar6_link w-nav-link">News</a>
+      </div>
+      <div class="navbar6_menu-right">
+        <a href="sponsor-a-jersey.html" class="button is-small w-button">Sponsor a Learner</a>
+      </div>
+    </nav>
+    <div class="navbar6_menu-button w-nav-button">
+      <div class="menu-icon5">
+        <div class="menu-icon1_line-top"></div>
+        <div class="menu-icon1_line-middle">
+          <div class="menu-icon1_line-middle-inner"></div>
+        </div>
+        <div class="menu-icon1_line-bottom"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Styles -->
+<style>
+/* Sticky Navigation Styles */
+.navbar6_component {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--color-scheme-1--background);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.navbar6_component.scrolled {
+  box-shadow: 0 2px 20px rgba(107, 70, 193, 0.15);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Purple accent for active nav link */
+.navbar6_link.w--current {
+  color: #6B46C1 !important;
+  font-weight: 600;
+}
+
+/* Dropdown Styling */
+.navbar6_dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.navbar6_dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.navbar6_dropdown.w--open .navbar6_dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.navbar6_dropdown-list {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  min-width: 180px;
+  padding: 0.5rem 0;
+}
+
+.navbar6_dropdown-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #334155 !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar6_dropdown-link:hover {
+  background-color: #f8fafc;
+  color: #6B46C1 !important;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 991px) {
+  .navbar6_dropdown-list {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+  
+  .navbar6_dropdown-link {
+    padding-left: 1.5rem;
+    border-left: 2px solid #e2e8f0;
+    margin-left: 1rem;
+  }
+}
+</style>
+
+<!-- Navigation JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Sticky Navigation with enhanced performance
+  const navbar = document.querySelector('.navbar6_component');
+  let lastScrollTop = 0;
+  let scrollThreshold = 50;
+  
+  function handleScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > scrollThreshold) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }
+  
+  // Throttled scroll handler for performance
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+  
+  // Initial scroll check
+  handleScroll();
+  
+  // Set current page active state
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.navbar6_link');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('w--current');
+    } else {
+      link.classList.remove('w--current');
+    }
+  });
+});
+</script>

@@ -1,0 +1,328 @@
+/* ==========================================================================
+   STATS SECTIONS MOBILE OPTIMIZATION
+   Enhanced mobile layout for all statistics displays
+   ========================================================================== */
+
+/* Base Stats Component Mobile Styles */
+@media screen and (max-width: 991px) {
+  /* Main stats container */
+  .section_stats1 {
+    padding: 3rem 0 !important;
+  }
+  
+  .stats1_component {
+    padding: 0 !important;
+  }
+  
+  /* Stats content grid - stack on tablets */
+  .stats1_content,
+  .stats1_content-2 {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  .stats1_content-left,
+  .stats1_content-right {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+  
+  /* Stats list - 2 columns on tablet */
+  .stats1_list {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem 1.5rem !important;
+    padding: 2rem 0 !important;
+  }
+  
+  /* Individual stat items */
+  .stats1_item,
+  .stats1_item-2,
+  .stats1_item-3 {
+    text-align: center !important;
+    padding: 1.5rem 1rem !important;
+    background: rgba(107, 70, 193, 0.03) !important;
+    border-radius: 12px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+  
+  .stats1_item:hover,
+  .stats1_item-2:hover,
+  .stats1_item-3:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(107, 70, 193, 0.15) !important;
+  }
+  
+  /* Stats numbers */
+  .stats1_number {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    color: #6B46C1 !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* Mobile Portrait Optimizations */
+@media screen and (max-width: 767px) {
+  .section_stats1 {
+    padding: 2.5rem 0 !important;
+  }
+  
+  /* Stack all content vertically */
+  .stats1_content,
+  .stats1_content-2 {
+    gap: 1.5rem !important;
+  }
+  
+  /* Stats list - single column on mobile */
+  .stats1_list {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 1.5rem 0 !important;
+  }
+  
+  /* Larger touch targets and better spacing */
+  .stats1_item,
+  .stats1_item-2,
+  .stats1_item-3 {
+    padding: 2rem 1.5rem !important;
+    min-height: 120px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: linear-gradient(135deg, rgba(107, 70, 193, 0.05) 0%, rgba(107, 70, 193, 0.02) 100%) !important;
+    border: 1px solid rgba(107, 70, 193, 0.1) !important;
+  }
+  
+  /* Adjust number size for mobile */
+  .stats1_number {
+    font-size: 2.5rem !important;
+    margin-bottom: 0.75rem !important;
+    background: linear-gradient(135deg, #6B46C1 0%, #9333EA 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+  
+  /* Stat labels */
+  .stats1_item h3,
+  .stats1_item-2 h3,
+  .stats1_item-3 h3,
+  .heading-style-h6 {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    color: #374151 !important;
+    margin: 0 !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Section headings */
+  .stats1_content-left h2,
+  .section_stats1 .heading-style-h2 {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Description text */
+  .stats1_content-right p,
+  .section_stats1 .text-size-medium {
+    font-size: 0.9375rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* Small Mobile Optimizations */
+@media screen and (max-width: 479px) {
+  .section_stats1 {
+    padding: 2rem 0 !important;
+  }
+  
+  /* Even more compact for small screens */
+  .stats1_item,
+  .stats1_item-2,
+  .stats1_item-3 {
+    padding: 1.75rem 1.25rem !important;
+    min-height: 110px !important;
+  }
+  
+  .stats1_number {
+    font-size: 2.25rem !important;
+  }
+  
+  .stats1_item h3,
+  .stats1_item-2 h3,
+  .stats1_item-3 h3,
+  .heading-style-h6 {
+    font-size: 0.9375rem !important;
+  }
+  
+  /* Section headings */
+  .stats1_content-left h2,
+  .section_stats1 .heading-style-h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Tighter margins */
+  .margin-bottom.margin-xxlarge {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .margin-bottom.margin-xxsmall {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* Alternative Stats Layout for 2-column display on mobile */
+@media screen and (max-width: 767px) and (min-width: 480px) {
+  /* Option to show 2 columns for better use of space */
+  .stats1_list.two-column-mobile {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  .stats1_list.two-column-mobile .stats1_item,
+  .stats1_list.two-column-mobile .stats1_item-2,
+  .stats1_list.two-column-mobile .stats1_item-3 {
+    padding: 1.5rem 0.75rem !important;
+    min-height: 100px !important;
+  }
+  
+  .stats1_list.two-column-mobile .stats1_number {
+    font-size: 2rem !important;
+  }
+  
+  .stats1_list.two-column-mobile h3 {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Animation for mobile interactions */
+@media screen and (max-width: 991px) {
+  /* Add subtle animations for better engagement */
+  .stats1_number {
+    animation: fadeInScale 0.6s ease-out;
+  }
+  
+  .stats1_item,
+  .stats1_item-2,
+  .stats1_item-3 {
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .stats1_item:nth-child(1) { animation-delay: 0.1s; }
+  .stats1_item:nth-child(2) { animation-delay: 0.2s; }
+  .stats1_item:nth-child(3) { animation-delay: 0.3s; }
+  .stats1_item:nth-child(4) { animation-delay: 0.4s; }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility improvements */
+@media screen and (max-width: 991px) {
+  /* Ensure good contrast and readability */
+  .stats1_number {
+    text-shadow: 0 2px 4px rgba(107, 70, 193, 0.1);
+  }
+  
+  /* Better focus states for keyboard navigation */
+  .stats1_item:focus-within,
+  .stats1_item-2:focus-within,
+  .stats1_item-3:focus-within {
+    outline: 2px solid #6B46C1 !important;
+    outline-offset: 4px !important;
+  }
+}
+
+/* Horizontal scroll prevention */
+@media screen and (max-width: 991px) {
+  .section_stats1,
+  .stats1_component,
+  .stats1_list {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Impact Section Stats (if different from main stats) */
+@media screen and (max-width: 767px) {
+  /* Any impact-specific stats styling */
+  .impact-stats .stats1_number {
+    font-size: 2.75rem !important;
+  }
+  
+  .impact-stats .stats1_item {
+    background: linear-gradient(135deg, #F3F4F6 0%, #FFFFFF 100%) !important;
+    border: 2px solid #E5E7EB !important;
+  }
+}
+
+/* Stats with icons (future enhancement) */
+@media screen and (max-width: 767px) {
+  .stats1_item-with-icon {
+    position: relative !important;
+    padding-top: 3rem !important;
+  }
+  
+  .stats1_item-with-icon::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(107, 70, 193, 0.1);
+    border-radius: 50%;
+  }
+}
+
+/* Card-style stats for modern look */
+@media screen and (max-width: 767px) {
+  .stats1_list.card-style .stats1_item {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    background: white !important;
+    border: none !important;
+  }
+  
+  .stats1_list.card-style .stats1_item:active {
+    transform: scale(0.98) !important;
+  }
+}
+
+/* Ensure proper spacing with other sections */
+@media screen and (max-width: 767px) {
+  .section_stats1 + section,
+  .section_stats1 + .section,
+  .section_stats1 + header {
+    margin-top: 0 !important;
+  }
+  
+  section + .section_stats1,
+  .section + .section_stats1,
+  header + .section_stats1 {
+    margin-top: 0 !important;
+  }
+}
