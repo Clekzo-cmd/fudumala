@@ -1,0 +1,131 @@
+/* ==========================================================================
+   SIMPLE ICONS INTEGRATION - SOCIAL MEDIA ONLY
+   Social media icons from https://simpleicons.org/
+   Keep Material Icons for rest of website
+   ========================================================================== */
+
+/* Simple Icons Base Styles - Only for Social Media */
+.simple-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Social Media Icons in Footer Only */
+.footer5_social-link .simple-icon,
+.social-link .simple-icon {
+  width: 18px;
+  height: 18px;
+  transition: all var(--transition-base);
+}
+
+.footer5_social-link:hover .simple-icon,
+.social-link:hover .simple-icon {
+  transform: scale(1.1);
+}
+
+/* Facebook Icon */
+.icon-facebook {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="facebook"]:hover {
+  background: #1877F2 !important;
+}
+
+/* Instagram Icon */
+.icon-instagram {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="instagram"]:hover {
+  background: linear-gradient(45deg, #F56040, #E1306C, #C13584, #833AB4, #5851DB) !important;
+}
+
+/* YouTube Icon */
+.icon-youtube {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="youtube"]:hover,
+.footer5_social-link[href*="youtu.be"]:hover {
+  background: #FF0000 !important;
+}
+
+/* LinkedIn Icon */
+.icon-linkedin {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="linkedin"]:hover {
+  background: #0A66C2 !important;
+}
+
+/* X (Twitter) Icon */
+.icon-x {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="twitter"]:hover,
+.footer5_social-link[href*="x.com"]:hover {
+  background: #000000 !important;
+}
+
+/* WhatsApp Icon */
+.icon-whatsapp {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="whatsapp"]:hover,
+.footer5_social-link[href*="wa.me"]:hover {
+  background: #25D366 !important;
+}
+
+/* Email Icon */
+.icon-gmail {
+  fill: currentColor;
+}
+
+.footer5_social-link[href*="mailto"]:hover {
+  background: #EA4335 !important;
+}
+
+/* Website/Link Icon */
+.icon-link {
+  fill: currentColor;
+}
+
+.footer5_social-link[href^="http"]:hover:not([href*="facebook"]):not([href*="instagram"]):not([href*="youtube"]):not([href*="linkedin"]):not([href*="twitter"]):not([href*="x.com"]):not([href*="whatsapp"]):not([href*="wa.me"]) {
+  background: var(--color-primary) !important;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .footer5_social-link[href*="twitter"]:hover,
+  .footer5_social-link[href*="x.com"]:hover {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  
+  .footer5_social-link[href*="twitter"]:hover .simple-icon,
+  .footer5_social-link[href*="x.com"]:hover .simple-icon {
+    fill: #000000;
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .footer5_social-link .simple-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .footer5_social-link .simple-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

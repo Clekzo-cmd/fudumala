@@ -1,0 +1,83 @@
+/* Google Material Icons Styling */
+
+/* Ensure Material Icons inherit color from parent */
+.material-icons {
+  color: inherit;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Icon size variations to match existing icon-embed classes */
+.icon-embed-xxsmall .material-icons {
+  font-size: 16px;
+}
+
+.icon-embed-xsmall .material-icons {
+  font-size: 20px;
+}
+
+.icon-embed-small .material-icons {
+  font-size: 24px;
+}
+
+.icon-embed-medium .material-icons {
+  font-size: 32px;
+}
+
+.icon-embed-large .material-icons {
+  font-size: 48px;
+}
+
+.icon-embed-xlarge .material-icons {
+  font-size: 64px;
+}
+
+/* Contact page icon sizing */
+.icon-1x1-xsmall .material-icons {
+  font-size: 24px;
+}
+
+/* Footer social icons */
+.footer5_social-link .material-icons {
+  font-size: 20px;
+}
+
+/* Social sharing buttons */
+.share-button .material-icons {
+  font-size: 24px;
+}
+
+/* Payment toggle icons */
+.recurring-info .material-icons {
+  font-size: 16px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* Ensure icons work in button contexts */
+.button .material-icons,
+.w-button .material-icons {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Arrow icons for navigation */
+.slider-arrow-icon .material-icons {
+  font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .material-icons {
+    font-size: inherit;
+  }
+  
+  .icon-embed-xlarge .material-icons {
+    font-size: 48px;
+  }
+  
+  .icon-embed-large .material-icons {
+    font-size: 32px;
+  }
+}
