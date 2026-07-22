@@ -1,2 +1,5 @@
 _worker.js
 _routes.json
+.DS_Store
+**/.DS_Store
+videos/

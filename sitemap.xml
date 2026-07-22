@@ -9,91 +9,140 @@
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/about</loc>
+    <loc>https://fudumala.threadsforikasi.org/about/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/how-it-works</loc>
+    <loc>https://fudumala.threadsforikasi.org/how-it-works/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/sponsor</loc>
+    <loc>https://fudumala.threadsforikasi.org/sponsor/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/schools</loc>
+    <loc>https://fudumala.threadsforikasi.org/schools/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/impact</loc>
+    <loc>https://fudumala.threadsforikasi.org/impact/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/impact/2025</loc>
+    <loc>https://fudumala.threadsforikasi.org/impact/2025/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/impact/2024</loc>
+    <loc>https://fudumala.threadsforikasi.org/impact/2024/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/impact/2023</loc>
+    <loc>https://fudumala.threadsforikasi.org/impact/2023/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/news</loc>
+    <loc>https://fudumala.threadsforikasi.org/news/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/faq</loc>
+    <loc>https://fudumala.threadsforikasi.org/news/nyiko-handover/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/news/olithemba-cover/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/news/khabo-newzroom/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/news/khabo-you-fm/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/news/umtata-expansion/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/news/22-on-sloane/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/faq/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/contact</loc>
+    <loc>https://fudumala.threadsforikasi.org/get-involved/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://fudumala.threadsforikasi.org/contact/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/privacy</loc>
+    <loc>https://fudumala.threadsforikasi.org/privacy/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://fudumala.threadsforikasi.org/terms</loc>
+    <loc>https://fudumala.threadsforikasi.org/terms/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
