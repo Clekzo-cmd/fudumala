@@ -171,6 +171,11 @@ Back to the challenge
   var params = new URLSearchParams(window.location.search);
   var pfId = params.get('pf_payment_id') || null;
 
+  // Every PayFast return_url carries ?paid=1. Only two of the sponsor forms
+  // write the sessionStorage key below, and PayFast is not relied on to append
+  // anything of its own, so this marker is what proves a payment happened.
+  var paidFlag = params.get('paid') === '1';
+
   var tierData = null;
   try {
     var raw = sessionStorage.getItem('fudumala_pending_tier');
@@ -181,7 +186,7 @@ Back to the challenge
   } catch (e) {}
 
   // If no payment signal at all, show no-payment state
-  if (!pfId && !tierData) {
+  if (!pfId && !tierData && !paidFlag) {
     document.getElementById('no-payment-state').classList.remove('hidden');
     return;
   }
@@ -405,15 +410,22 @@ Back to the challenge
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    // Jersey number on jersey
-    var numStr = '#' + jerseyNum;
-    ctx.fillStyle = TOKENS.purpleDeepest;
-    ctx.font = (numStr.length > 4 ? '900 72px' : '900 88px') + ' Outfit, Arial Black, sans-serif';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(numStr, jCx, jCy + 12);
+    // Jersey number on jersey. Omitted when unknown: stamping a number we do
+    // not have would tell the donor they funded a specific jersey.
+    if (jerseyNum) {
+      var numStr = '#' + jerseyNum;
+      ctx.fillStyle = TOKENS.purpleDeepest;
+      ctx.font = (numStr.length > 4 ? '900 72px' : '900 88px') + ' Outfit, Arial Black, sans-serif';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(numStr, jCx, jCy + 12);
+    }
 
     // State label
-    var label = state === 'partial' ? 'I CONTRIBUTED TO THIS JERSEY' : 'I SPONSORED THIS JERSEY';
+    var label = state === 'partial'
+      ? 'I CONTRIBUTED TO THIS JERSEY'
+      : state === 'unknown'
+        ? 'I JOINED THE UBUNTU CHALLENGE'
+        : 'I SPONSORED THIS JERSEY';
     ctx.fillStyle = TOKENS.white;
     ctx.font = '700 42px Outfit, Arial, sans-serif';
     ctx.textBaseline = 'middle';
@@ -497,7 +509,7 @@ Back to the challenge
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = url;
-          a.download = 'fudumala-badge-jersey-' + jerseyNum + '.png';
+          a.download = jerseyNum ? 'fudumala-badge-jersey-' + jerseyNum + '.png' : 'fudumala-badge.png';
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
@@ -581,6 +593,39 @@ Back to the challenge
     };
   }
 
+  // Used when the payment is confirmed but this page has no jersey count for
+  // it, e.g. a custom contribution through the flyout. Claims no amount and no
+  // jersey count, because neither is known here.
+  function buildGenericCaptions() {
+    return {
+      whatsapp: [
+        'I just backed the #FudumalaUbuntuChallenge to help put warm school jerseys on learners in Tembisa!',
+        '',
+        'Ubuntu means I am because we are. A child will be warmer this winter because of this.',
+        '',
+        "I'm challenging YOU to do the same. Sponsor a jersey from R350:",
+        SPONSOR_URL,
+      ].join('\n'),
+
+      facebook: [
+        'I just backed the #FudumalaUbuntuChallenge to help put warm school jerseys on learners in Tembisa!',
+        '',
+        'Every child deserves to be warm. R350 sponsors a full jersey, and any amount helps.',
+        '',
+        "I'm tagging @[Friend 1], @[Friend 2] and @[Friend 3]. Your turn!",
+        SPONSOR_URL,
+      ].join('\n'),
+
+      instagram: [
+        'I just backed the #FudumalaUbuntuChallenge to help put warm school jerseys on learners in Tembisa!',
+        '',
+        'Ubuntu means I am because we are. Any amount helps. Link in bio.',
+        '',
+        '#FudumalaUbuntuChallenge #Ubuntu #WarmthForAll #Tembisa #SouthAfrica',
+      ].join('\n'),
+    };
+  }
+
   // ─── 6. Populate DOM ──────────────────────────────────────
 
   function populatePage(nameFirst, jerseys, counterData, alloc) {
@@ -601,11 +646,15 @@ Back to the challenge
     } else if (alloc && alloc.state === 'overflow') {
       var nO = alloc.jerseys_completed;
       subEl.textContent = 'You completed ' + (nO > 1 ? nO + ' jerseys' : 'a jersey') + ' and your change is already funding the next one.';
-    } else {
-      var n = jerseys || 1;
+    } else if (jerseys) {
+      var n = jerseys;
       var jerseyWord = n === 1 ? 'jersey' : 'jerseys';
       var learnerWord = n === 1 ? 'a learner' : 'learners';
       subEl.textContent = 'You just sponsored ' + n + ' school ' + jerseyWord + ' for ' + learnerWord + ' in Tembisa.';
+    } else {
+      // Payment confirmed but the details are not known to this page yet, so
+      // claim nothing about jersey counts. Do not invent a number here.
+      subEl.textContent = 'Your payment went through. Thank you for helping keep a learner in Tembisa warm this winter.';
     }
 
     // Counter animation
@@ -620,7 +669,9 @@ Back to the challenge
     // Captions — allocation-aware for partial contributions
     var captions = (alloc && alloc.state === 'partial')
       ? buildPartialCaptions(alloc.jersey_number, alloc.amount_paid, alloc.percentage_after)
-      : buildCaptions(jerseys || 1);
+      : jerseys
+        ? buildCaptions(jerseys)
+        : buildGenericCaptions();
     document.getElementById('caption-whatsapp').textContent = captions.whatsapp;
     document.getElementById('caption-facebook').textContent = captions.facebook;
     document.getElementById('caption-instagram').textContent = captions.instagram;
@@ -768,8 +819,11 @@ Back to the challenge
     var counter = results[1];
     var alloc = results[2];
 
-    // Prefer worker data for jerseys; fall back to sessionStorage
-    var jerseys = (moment && moment.jerseys) ? moment.jerseys : (tierData ? tierData.jerseys : 1);
+    // Prefer worker data for jerseys; fall back to sessionStorage. Stays null
+    // when neither is available, so the copy below claims no jersey count.
+    var jerseys = (moment && moment.jerseys)
+      ? moment.jerseys
+      : (tierData && tierData.jerseys ? tierData.jerseys : null);
     var nameFirst = (moment && moment.name_first) ? moment.name_first : (alloc && alloc.first_name ? alloc.first_name : null);
 
     if (alloc) {
@@ -783,9 +837,11 @@ Back to the challenge
 
     populatePage(nameFirst, jerseys, counter, alloc);
 
-    // Generate the sponsorship badge
-    var badgeJerseyNum = alloc ? (alloc.jersey_number || 1) : 1;
-    var badgeState = alloc ? alloc.state : 'completed';
+    // Generate the sponsorship badge. With no allocation there is no jersey
+    // number to show, so the badge drops the number and the "I sponsored this
+    // jersey" claim rather than defaulting to #1.
+    var badgeJerseyNum = alloc ? (alloc.jersey_number || null) : null;
+    var badgeState = alloc ? alloc.state : (jerseys ? 'completed' : 'unknown');
     generateBadge(badgeJerseyNum, nameFirst, badgeState);
   });
 
